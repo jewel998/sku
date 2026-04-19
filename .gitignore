@@ -13,13 +13,6 @@ coverage
 # Husky hooks
 .husky/_
 
-# pnpm
-pnpm-lock.yaml
-
-# Package manager lockfiles (npm/yarn if used)
-package-lock.json
-yarn.lock
-
 # Turbo
 .turbo
 
