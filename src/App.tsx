@@ -9,15 +9,17 @@ function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
 
   useEffect(() => {
-    fetchFontBytes().then(() => setFontLoaded(true)).catch(() => setFontLoaded(false));
+    fetchFontBytes()
+      .then(() => setFontLoaded(true))
+      .catch(() => setFontLoaded(false));
   }, []);
 
   const navLinks = useMemo(
     () => [
       { label: 'Builder', path: '/' },
-      { label: 'About', path: '/about' }
+      { label: 'About', path: '/about' },
     ],
-    []
+    [],
   );
 
   return (

@@ -12,9 +12,9 @@ A clear description of the bug or issue.
 
 ### Steps to reproduce
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ### Expected behavior
 

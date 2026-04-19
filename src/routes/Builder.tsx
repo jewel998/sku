@@ -13,7 +13,7 @@ const DEFAULT_PAGE: LabelData = {
   size: '',
   brand: '',
   category: '',
-  locationId: ''
+  locationId: '',
 };
 
 interface BuilderPageProps {
@@ -70,7 +70,8 @@ export default function BuilderPage({ fontLoaded }: BuilderPageProps) {
       next[index] = { ...nextPage };
 
       if (nextPage.brand && nextPage.category && !nextPage.locationId) {
-        const mapped = (config.mapping as ConfigMapping)[nextPage.brand]?.[nextPage.category]?.[0] ?? '';
+        const mapped =
+          (config.mapping as ConfigMapping)[nextPage.brand]?.[nextPage.category]?.[0] ?? '';
         next[index] = { ...nextPage, locationId: mapped };
       }
 
@@ -79,14 +80,16 @@ export default function BuilderPage({ fontLoaded }: BuilderPageProps) {
   };
 
   const addPage = () => setPages((current) => [...current, { ...DEFAULT_PAGE }]);
-  const removePage = (index: number) => setPages((current) => current.filter((_, idx) => idx !== index));
+  const removePage = (index: number) =>
+    setPages((current) => current.filter((_, idx) => idx !== index));
 
   return (
     <div className="grid-split">
       <div className="card">
         <div className="section-title">Label Builder</div>
         <p className="section-note">
-          Add label pages and update fields. Each page generates a separate PDF page with a 5cm x 2cm label.
+          Add label pages and update fields. Each page generates a separate PDF page with a 5cm x
+          2cm label.
         </p>
 
         <div className="field-grid">
@@ -112,7 +115,9 @@ export default function BuilderPage({ fontLoaded }: BuilderPageProps) {
 
         {error ? <div className="warning-box">{error}</div> : null}
         <div style={{ marginTop: '1rem' }}>
-          <p className="label">Install this app as a PWA on mobile for fast access and offline PDF preview support.</p>
+          <p className="label">
+            Install this app as a PWA on mobile for fast access and offline PDF preview support.
+          </p>
         </div>
       </div>
 

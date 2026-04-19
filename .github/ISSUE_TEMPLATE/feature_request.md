@@ -16,9 +16,9 @@ Explain why this feature would improve the app.
 
 ### Acceptance criteria
 
-- 
-- 
-- 
+-
+-
+-
 
 ### Additional notes
 

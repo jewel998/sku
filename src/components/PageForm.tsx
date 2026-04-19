@@ -10,10 +10,18 @@ interface PageFormProps {
   onRemove: (index: number) => void;
 }
 
-export default function PageForm({ index, page, brands, categories, onChange, onRemove }: PageFormProps) {
-  const handleInput = (field: keyof LabelData) => (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    onChange(index, { ...page, [field]: event.target.value });
-  };
+export default function PageForm({
+  index,
+  page,
+  brands,
+  categories,
+  onChange,
+  onRemove,
+}: PageFormProps) {
+  const handleInput =
+    (field: keyof LabelData) => (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      onChange(index, { ...page, [field]: event.target.value });
+    };
 
   const nameId = `name-${index}`;
   const sizeId = `size-${index}`;
@@ -57,7 +65,12 @@ export default function PageForm({ index, page, brands, categories, onChange, on
           <label className="label" htmlFor={brandId}>
             Brand
           </label>
-          <select id={brandId} className="select" value={page.brand} onChange={handleInput('brand')}>
+          <select
+            id={brandId}
+            className="select"
+            value={page.brand}
+            onChange={handleInput('brand')}
+          >
             <option value="">Choose brand or type</option>
             {brands.map((brand) => (
               <option key={brand} value={brand}>
@@ -70,7 +83,12 @@ export default function PageForm({ index, page, brands, categories, onChange, on
           <label className="label" htmlFor={categoryId}>
             Category
           </label>
-          <select id={categoryId} className="select" value={page.category} onChange={handleInput('category')}>
+          <select
+            id={categoryId}
+            className="select"
+            value={page.category}
+            onChange={handleInput('category')}
+          >
             <option value="">Choose category</option>
             {Object.entries(categories).map(([key, label]) => (
               <option key={key} value={key}>

@@ -12,7 +12,8 @@ export default defineConfig({
       manifest: {
         name: 'SKU Label Maker',
         short_name: 'LabelMaker',
-        description: 'Create PDF labels with live preview, PWA install, and GitHub Pages deployment.',
+        description:
+          'Create PDF labels with live preview, PWA install, and GitHub Pages deployment.',
         theme_color: '#0f172a',
         background_color: '#f8fafc',
         display: 'standalone',
@@ -21,18 +22,18 @@ export default defineConfig({
           {
             src: 'pwa-192x192.svg',
             sizes: '192x192',
-            type: 'image/svg+xml'
+            type: 'image/svg+xml',
           },
           {
             src: 'pwa-512x512.svg',
             sizes: '512x512',
-            type: 'image/svg+xml'
-          }
-        ]
-      }
-    })
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    }),
   ],
   server: {
-    port: 4173
-  }
+    port: 4173,
+  },
 });

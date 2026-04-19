@@ -3,7 +3,8 @@ export default function AboutPage() {
     <div className="card">
       <div className="section-title">About SKU Label Maker</div>
       <p className="section-note">
-        A mobile-friendly PWA that generates product label PDFs using `pdf-lib` in the browser. Each label renders on its own small page, and you can install this app locally on your phone.
+        A mobile-friendly PWA that generates product label PDFs using `pdf-lib` in the browser. Each
+        label renders on its own small page, and you can install this app locally on your phone.
       </p>
       <div className="illustration-box">
         <h2>Features</h2>
