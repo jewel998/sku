@@ -1,0 +1,21 @@
+{
+  "brands": ["Damson Madder", "Beryl Bay", "Satin Harbor"],
+  "categories": {
+    "top": "Top",
+    "bottom": "Bottom",
+    "accessory": "Accessory"
+  },
+  "mapping": {
+    "Damson Madder": {
+      "top": ["R1-S1-Left", "R1-S1-Right"],
+      "bottom": ["R2-S2-Center"]
+    },
+    "Beryl Bay": {
+      "top": ["R1-S2-Left"],
+      "accessory": ["R3-S1-Right"]
+    },
+    "Satin Harbor": {
+      "bottom": ["R2-S3-Left", "R2-S3-Right"]
+    }
+  }
+}

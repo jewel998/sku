@@ -1,0 +1,27 @@
+node_modules
+dist
+.DS_Store
+.vscode
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.pnpm-store
+coverage
+
+# Husky hooks
+.husky/_
+
+# pnpm
+pnpm-lock.yaml
+
+# Package manager lockfiles (npm/yarn if used)
+package-lock.json
+yarn.lock
+
+# Turbo
+.turbo
+
+# Build outputs
+.next

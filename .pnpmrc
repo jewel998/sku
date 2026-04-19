@@ -1,0 +1,8 @@
+strict-peer-dependencies=false
+auto-install-peers=true
+shamefully-hoist=false
+virtual-store-dir=node_modules/.pnpm
+package-import-method=hardlink
+verify-store-integrity=true
+recursive-install=true
+ignore-workspace-root-check=false
