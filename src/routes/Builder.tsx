@@ -88,14 +88,14 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
   };
 
   return (
-    <div className="flex flex-col xl:flex-row gap-8 items-start p-6">
-      <section className="bg-slate-900/96 border border-white/10 rounded-xl p-6 shadow-lg flex-1">
-        <div className="text-lg font-bold mb-6 flex items-center gap-2">
+    <div className="flex flex-col xl:flex-row gap-6 items-start p-4">
+      <section className="bg-slate-900/96 border border-white/10 rounded-xl p-5 shadow-lg flex-1">
+        <div className="text-lg font-bold mb-5 flex items-center gap-2">
           <FileText className="w-5 h-5" />
           Label Builder
         </div>
 
-        <div className="mb-6">
+        <div className="mb-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
@@ -108,7 +108,7 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 mb-4">
+        <div className="grid grid-cols-1 gap-5 mb-4">
           {filteredPages.map((page, index) => (
             <PageForm
               key={index}
@@ -122,7 +122,7 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
           ))}
         </div>
 
-        <div className="flex justify-between items-center flex-wrap gap-3 mt-4">
+        <div className="flex justify-between items-center flex-wrap gap-3 mt-3">
           <div className="flex gap-3">
             <button
               type="button"
@@ -153,7 +153,7 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
         ) : null}
       </section>
 
-      <div className="flex-[1.2] sticky top-6">
+      <div className="flex-[1.2] sticky top-24">
         <PDFViewer pdfUrl={pdfUrl} />
       </div>
     </div>

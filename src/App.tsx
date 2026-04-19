@@ -4,7 +4,6 @@ import BuilderPage from './routes/Builder';
 import AboutPage from './routes/About';
 import { fetchFontBytes } from './lib/pdfGenerator';
 import './index.css';
-import { Tag } from 'lucide-react';
 
 function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -38,10 +37,14 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-900 text-slate-200 font-sans">
       <header className="flex items-center justify-between gap-4 p-5 bg-slate-900/95 sticky top-0 z-10 border-b border-slate-700/20">
-        <div className="flex items-center gap-2 text-xl font-bold">
-          <Tag className="w-6 h-6" />
-          SKU Label Maker
-        </div>
+        <Link to="/" className="flex items-center gap-3 text-xl font-bold text-slate-100">
+          <img
+            src="/sku/logo.svg"
+            alt="SKU Label Maker"
+            className="w-9 h-9 rounded-2xl border border-slate-700 bg-slate-950"
+          />
+          <span>SKU Label Maker</span>
+        </Link>
         <nav className="flex gap-4">
           {navLinks.map((item) => (
             <Link

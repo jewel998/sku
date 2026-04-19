@@ -31,7 +31,7 @@ export default function PageForm({
   const locationId = `location-${index}`;
 
   return (
-    <div className="bg-slate-800 border border-slate-600 rounded-lg p-6 space-y-4">
+    <div className="bg-slate-800 border border-slate-600 rounded-lg p-4 space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 text-slate-300">
           <Hash className="w-5 h-5" />
@@ -47,11 +47,11 @@ export default function PageForm({
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <input
             id={nameId}
-            className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+            className="w-full px-3 py-2 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
             type="text"
             value={page.name}
             onChange={handleInput('name')}
@@ -61,7 +61,7 @@ export default function PageForm({
         <div className="space-y-2">
           <input
             id={sizeId}
-            className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+            className="w-full px-3 py-2 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
             type="text"
             value={page.size}
             onChange={handleInput('size')}
@@ -70,43 +70,47 @@ export default function PageForm({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <select
+          <input
             id={brandId}
-            className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+            list={`brand-list-${index}`}
+            className="w-full px-3 py-2 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+            type="text"
             value={page.brand}
             onChange={handleInput('brand')}
-          >
-            <option value="">Select brand</option>
+            placeholder="Brand"
+            aria-label="Brand"
+          />
+          <datalist id={`brand-list-${index}`}>
             {brands.map((brand) => (
-              <option key={brand} value={brand}>
-                {brand}
-              </option>
+              <option key={brand} value={brand} />
             ))}
-          </select>
+          </datalist>
         </div>
         <div className="space-y-2">
-          <select
+          <input
             id={categoryId}
-            className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+            list={`category-list-${index}`}
+            className="w-full px-3 py-2 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+            type="text"
             value={page.category}
             onChange={handleInput('category')}
-          >
-            <option value="">Select category</option>
+            placeholder="Category"
+            aria-label="Category"
+          />
+          <datalist id={`category-list-${index}`}>
             {Object.entries(categories).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
-              </option>
+              <option key={key} value={key} label={label} />
             ))}
-          </select>
+          </datalist>
         </div>
       </div>
 
       <div className="space-y-2">
         <input
           id={locationId}
-          className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+          className="w-full px-3 py-2 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
           type="text"
           value={page.locationId}
           onChange={handleInput('locationId')}
