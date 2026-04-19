@@ -52,10 +52,12 @@
   "dependencies": {
     "fontkit": "^2.0.4",
     "lodash-es": "^4.17.21",
+    "lucide-react": "^1.8.0",
     "pdf-lib": "^1.17.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0"
+    "react-router-dom": "^6.27.0",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.0.0",

@@ -12,7 +12,7 @@ describe('SKU config mapping', () => {
 
   it('should resolve a known mapped location', () => {
     const brand = 'Damson Madder';
-    const category = 'top';
+    const category = 'Top';
     const mapped = config.mapping[brand]?.[category]?.[0];
 
     expect(mapped).toBeTruthy();

@@ -10,18 +10,18 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
   return (
     <>
       {iframeSrc ? (
-        <div className="preview-frame">
+        <div className="w-full">
           <iframe
             title="PDF preview"
-            src={iframeSrc}
+            src={`${iframeSrc}#zoom=140`}
             width="100%"
-            height="420"
-            style={{ border: 'none' }}
+            height="800"
+            className="border border-slate-600 rounded-lg"
           />
         </div>
       ) : (
-        <div className="illustration-box">
-          <p>Fill the label fields and the preview will render automatically.</p>
+        <div className="flex items-center justify-center h-64 bg-slate-800 border border-slate-600 rounded-lg text-slate-400">
+          <p>Enter label details to see PDF preview</p>
         </div>
       )}
     </>

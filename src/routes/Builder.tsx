@@ -3,33 +3,39 @@ import { createLabelPdf, fetchFontBytes, LabelData } from '../lib/pdfGenerator';
 import { useDebounce } from '../hooks/useDebounce';
 import PageForm from '../components/PageForm';
 import PDFViewer from '../components/PDFViewer';
-import config from '../data/config.json';
+import config from '../data/config';
+import type { AppConfig } from '../types/config';
 import { uniq } from 'lodash-es';
+import { Search, Plus, FileText, Trash2 } from 'lucide-react';
+import { useLabelStore } from '../stores/labelStore';
 
-type ConfigMapping = Record<string, Record<string, string[]>>;
+type ConfigMapping = AppConfig['mapping'];
 
-const DEFAULT_PAGE: LabelData = {
-  name: '',
-  size: '',
-  brand: '',
-  category: '',
-  locationId: '',
-};
-
-interface BuilderPageProps {
-  fontLoaded: boolean;
-}
-
-export default function BuilderPage({ fontLoaded }: BuilderPageProps) {
-  const [pages, setPages] = useState<LabelData[]>([{ ...DEFAULT_PAGE }]);
+export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [, /*loading*/ setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const { pages, searchQuery, addPage, removePage, updatePage, setSearchQuery, clearAll } =
+    useLabelStore();
+
   const brands = useMemo(() => uniq(config.brands), []);
   const categories = config.categories;
+  const pageCount = pages.length;
 
   const debouncedPages = useDebounce(pages, 300);
+
+  const filteredPages = useMemo(() => {
+    if (!searchQuery) return pages;
+    return pages.filter(
+      (page) =>
+        page.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        page.size.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        page.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        page.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        page.locationId.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+  }, [pages, searchQuery]);
 
   useEffect(() => {
     if (!fontLoaded) {
@@ -64,64 +70,90 @@ export default function BuilderPage({ fontLoaded }: BuilderPageProps) {
     };
   }, [pdfUrl]);
 
-  const updatePage = (index: number, nextPage: LabelData) => {
-    setPages((current) => {
-      const next = [...current];
-      next[index] = { ...nextPage };
-
-      if (nextPage.brand && nextPage.category && !nextPage.locationId) {
-        const mapped =
-          (config.mapping as ConfigMapping)[nextPage.brand]?.[nextPage.category]?.[0] ?? '';
-        next[index] = { ...nextPage, locationId: mapped };
-      }
-
-      return next;
-    });
+  const handleUpdatePage = (index: number, nextPage: LabelData) => {
+    if (nextPage.brand && nextPage.category && !nextPage.locationId) {
+      const mapped =
+        (config.mapping as ConfigMapping)[nextPage.brand]?.[nextPage.category]?.[0] ?? '';
+      nextPage = { ...nextPage, locationId: mapped };
+    }
+    updatePage(index, nextPage);
   };
 
-  const addPage = () => setPages((current) => [...current, { ...DEFAULT_PAGE }]);
-  const removePage = (index: number) =>
-    setPages((current) => current.filter((_, idx) => idx !== index));
+  const handleAddPage = () => {
+    addPage();
+  };
+
+  const handleRemovePage = (index: number) => {
+    removePage(index);
+  };
 
   return (
-    <div className="grid-split">
-      <div className="card">
-        <div className="section-title">Label Builder</div>
-        <p className="section-note">
-          Add label pages and update fields. Each page generates a separate PDF page with a 5cm x
-          2cm label.
-        </p>
+    <div className="flex flex-col xl:flex-row gap-8 items-start p-6">
+      <section className="bg-slate-900/96 border border-white/10 rounded-xl p-6 shadow-lg flex-1">
+        <div className="text-lg font-bold mb-6 flex items-center gap-2">
+          <FileText className="w-5 h-5" />
+          Label Builder
+        </div>
 
-        <div className="field-grid">
-          {pages.map((page, index) => (
+        <div className="mb-6">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Search labels..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 mb-4">
+          {filteredPages.map((page, index) => (
             <PageForm
               key={index}
               index={index}
               page={page}
               brands={brands}
               categories={categories}
-              onChange={updatePage}
-              onRemove={removePage}
+              onChange={handleUpdatePage}
+              onRemove={handleRemovePage}
             />
           ))}
         </div>
 
-        <div className="preview-toolbar" style={{ marginTop: '1rem' }}>
-          <button type="button" className="button small-button" onClick={addPage}>
-            Add label page
-          </button>
-          <div className="status-pill">{pages.length} page(s)</div>
+        <div className="flex justify-between items-center flex-wrap gap-3 mt-4">
+          <div className="flex gap-3">
+            <button
+              type="button"
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 hover:-translate-y-px shadow-md hover:shadow-lg"
+              onClick={handleAddPage}
+            >
+              <Plus className="w-4 h-4" />
+              Add Label
+            </button>
+            <button
+              type="button"
+              className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-200 hover:-translate-y-px shadow-md hover:shadow-lg"
+              onClick={clearAll}
+            >
+              <Trash2 className="w-4 h-4" />
+              Clear All
+            </button>
+          </div>
+          <div className="px-3 py-1 bg-green-900/20 text-green-300 rounded-full text-sm">
+            {pageCount} labels
+          </div>
         </div>
 
-        {error ? <div className="warning-box">{error}</div> : null}
-        <div style={{ marginTop: '1rem' }}>
-          <p className="label">
-            Install this app as a PWA on mobile for fast access and offline PDF preview support.
-          </p>
-        </div>
-      </div>
+        {error ? (
+          <div className="mt-6 p-4 bg-red-900/20 border border-red-700/30 rounded-lg text-red-300">
+            {error}
+          </div>
+        ) : null}
+      </section>
 
-      <div>
+      <div className="flex-[1.2] sticky top-6">
         <PDFViewer pdfUrl={pdfUrl} />
       </div>
     </div>

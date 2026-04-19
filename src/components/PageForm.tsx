@@ -1,5 +1,6 @@
 import { ChangeEvent } from 'react';
 import { LabelData } from '../lib/pdfGenerator';
+import { X, Hash } from 'lucide-react';
 
 interface PageFormProps {
   index: number;
@@ -30,48 +31,54 @@ export default function PageForm({
   const locationId = `location-${index}`;
 
   return (
-    <div className="page-card">
-      <div className="field-row" style={{ alignItems: 'end' }}>
-        <div className="field-group">
-          <label className="label" htmlFor={nameId}>
-            Product Name (with color)
-          </label>
+    <div className="bg-slate-800 border border-slate-600 rounded-lg p-6 space-y-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3 text-slate-300">
+          <Hash className="w-5 h-5" />
+          <span className="text-lg font-medium">Label #{index + 1}</span>
+        </div>
+        <button
+          type="button"
+          className="p-2 text-slate-400 hover:text-red-400 transition-colors rounded hover:bg-slate-700"
+          onClick={() => onRemove(index)}
+          title="Remove label"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
           <input
             id={nameId}
-            className="input"
+            className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
             type="text"
             value={page.name}
             onChange={handleInput('name')}
-            placeholder="Example: Orchid Tee (Lilac)"
+            placeholder="Product name (with color)"
           />
         </div>
-        <div className="field-group">
-          <label className="label" htmlFor={sizeId}>
-            Size
-          </label>
+        <div className="space-y-2">
           <input
             id={sizeId}
-            className="input"
+            className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
             type="text"
             value={page.size}
             onChange={handleInput('size')}
-            placeholder="Example: M"
+            placeholder="Size (e.g., M)"
           />
         </div>
       </div>
 
-      <div className="field-row">
-        <div className="field-group">
-          <label className="label" htmlFor={brandId}>
-            Brand
-          </label>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
           <select
             id={brandId}
-            className="select"
+            className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
             value={page.brand}
             onChange={handleInput('brand')}
           >
-            <option value="">Choose brand or type</option>
+            <option value="">Select brand</option>
             {brands.map((brand) => (
               <option key={brand} value={brand}>
                 {brand}
@@ -79,17 +86,14 @@ export default function PageForm({
             ))}
           </select>
         </div>
-        <div className="field-group">
-          <label className="label" htmlFor={categoryId}>
-            Category
-          </label>
+        <div className="space-y-2">
           <select
             id={categoryId}
-            className="select"
+            className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
             value={page.category}
             onChange={handleInput('category')}
           >
-            <option value="">Choose category</option>
+            <option value="">Select category</option>
             {Object.entries(categories).map(([key, label]) => (
               <option key={key} value={key}>
                 {label}
@@ -99,25 +103,15 @@ export default function PageForm({
         </div>
       </div>
 
-      <div className="field-group">
-        <label className="label" htmlFor={locationId}>
-          Location ID
-        </label>
+      <div className="space-y-2">
         <input
           id={locationId}
-          className="input"
+          className="w-full px-4 py-3 bg-slate-700 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
           type="text"
           value={page.locationId}
           onChange={handleInput('locationId')}
-          placeholder="Auto-filled when mapping is available"
+          placeholder="Location ID (auto-filled)"
         />
-      </div>
-
-      <div className="preview-toolbar">
-        <div className="info-pill">Label #{index + 1}</div>
-        <button type="button" className="button small-button" onClick={() => onRemove(index)}>
-          Remove
-        </button>
       </div>
     </div>
   );
