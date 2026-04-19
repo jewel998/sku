@@ -23,7 +23,7 @@ interface BuilderPageProps {
 export default function BuilderPage({ fontLoaded }: BuilderPageProps) {
   const [pages, setPages] = useState<LabelData[]>([{ ...DEFAULT_PAGE }]);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [, /*loading*/ setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const brands = useMemo(() => uniq(config.brands), []);
