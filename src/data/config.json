@@ -40,111 +40,329 @@
     "Co-ords Set": "Co-ords Set",
     "Outerwear": "Outerwear",
     "Accessory": "Accessory",
-    "Shirt": "Shirt",
     "Camisole": "Camisole",
     "Lingerie": "Lingerie"
   },
   "mapping": {
     "Damson Madder": {
       "Top": ["R1-S1-Left"],
-      "Dress": ["R1-S1-Right"]
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Ganni": {
-      "Top": ["R1-S2-Left"],
-      "Dress": ["R1-S2-Right"]
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Free People": {
-      "Top": ["R1-S3-Left"],
-      "Camisole": ["R1-S3-Right"]
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R2-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Neo Noir": {
-      "Top": ["R1-S4-Left"],
-      "Bottom": ["R1-S4-Right"]
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Coosy": {
-      "Top": ["R1-S5-Left"],
-      "Dress": ["R1-S5-Right"]
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Light Before Dark": {
-      "Top": ["R1-S6-Left"]
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Anthropologie": {
-      "Top": ["R1-S6-Right"]
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R2-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Free-est": {
-      "Bottom": ["R2-S1-Left"]
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "AllSaints": {
-      "Bottom": ["R2-S1-Right"]
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "The Great.": {
-      "Bottom": ["R2-S2-Left"]
-    },
-    "River Island": {
-      "Bottom": ["R2-S2-Right"]
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Cleobella": {
-      "Dress": ["R2-S3-Left"]
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R2-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Scotch & Soda": {
-      "Dress": ["R2-S3-Right"]
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Kiabi": {
-      "Dress": ["R2-S4-Left"]
-    },
-    "Karina Grimaldi": {
-      "Dress": ["R2-S4-Right"]
-    },
-    "Mari & Fatou": {
-      "Dress": ["R2-S5-Left"]
-    },
-    "Needle & Thread": {
-      "Dress": ["R2-S5-Right"]
-    },
-    "Aje": {
-      "Dress": ["R2-S6-Left"]
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Lou & Gray": {
-      "Co-ords Set": ["R2-S6-Right"]
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Ecote": {
-      "Co-ords Set": ["R1-S1-Left"]
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R2-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "NEXT": {
-      "Outerwear": ["R1-S1-Right"]
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Nicobar": {
-      "Outerwear": ["R1-S2-Left"]
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Urban Outfitters": {
-      "Accessory": ["R1-S2-Right"]
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Juniper": {
-      "Shirt": ["R1-S3-Left"]
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R2-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Urban Outfitters - Silence+Noise": {
-      "Shirt": ["R1-S3-Right"]
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Boii": {
-      "Camisole": ["R1-S4-Left"]
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "ASOS Design": {
-      "Camisole": ["R1-S4-Right"]
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "NA": {
-      "Lingerie": ["R1-S5-Left"]
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R2-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "JD Williams": {
-      "Lingerie": ["R1-S5-Right"]
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "JOANNA": {
-      "Top": ["R2-S3-Left"]
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Karina Grimaldi": {
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Mari & Fatou": {
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R2-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Needle & Thread": {
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Aje": {
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "River Island": {
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "studio CLIP": {
-      "Top": ["R2-S3-Right"]
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R2-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
     },
     "Love Stitch": {
-      "Top": ["R2-S4-Left"]
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
     }
   }
 }
