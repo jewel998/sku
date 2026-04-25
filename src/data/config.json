@@ -31,7 +31,16 @@
     "Aje",
     "River Island",
     "studio CLIP",
-    "Love Stitch"
+    "Love Stitch",
+    "Karen Millen",
+    "Tommy Hilfiger",
+    "Gocco",
+    "John Lewis",
+    "Ann Taylor",
+    "Zua",
+    "Bershka",
+    "OMNES",
+    "Daily Practice"
   ],
   "categories": {
     "Top": "Top",
@@ -360,6 +369,96 @@
       "Dress": ["R1-S3-Right"],
       "Co-ords Set": ["R2-S4-Left"],
       "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Karen Millen": {
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Tommy Hilfiger": {
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Gocco": {
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "John Lewis": {
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Ann Taylor": {
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Zua": {
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R2-S2-Right"],
+      "Dress": ["R1-S3-Left"],
+      "Co-ords Set": ["R1-S4-Right"],
+      "Outerwear": ["R2-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Bershka": {
+      "Top": ["R1-S1-Left"],
+      "Bottom": ["R1-S2-Right"],
+      "Dress": ["R2-S3-Left"],
+      "Co-ords Set": ["R2-S4-Right"],
+      "Outerwear": ["R1-S5-Left"],
+      "Accessory": ["R2-S6-Right"],
+      "Camisole": ["R2-S1-Right"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "OMNES": {
+      "Top": ["R1-S1-Right"],
+      "Bottom": ["R1-S2-Left"],
+      "Dress": ["R1-S3-Right"],
+      "Co-ords Set": ["R2-S4-Left"],
+      "Outerwear": ["R2-S5-Right"],
+      "Accessory": ["R2-S6-Left"],
+      "Camisole": ["R1-S6-Left"],
+      "Lingerie": ["R1-S6-Right"]
+    },
+    "Daily Practice": {
+      "Top": ["R2-S1-Left"],
+      "Bottom": ["R2-S2-Left"],
+      "Dress": ["R2-S3-Right"],
+      "Co-ords Set": ["R1-S4-Left"],
+      "Outerwear": ["R1-S5-Right"],
       "Accessory": ["R2-S6-Left"],
       "Camisole": ["R1-S6-Left"],
       "Lingerie": ["R1-S6-Right"]
