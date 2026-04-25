@@ -3,11 +3,16 @@ import { Route, Routes, Link } from 'react-router-dom';
 import BuilderPage from './routes/Builder';
 import AboutPage from './routes/About';
 import ConfigPage from './routes/Config';
+import LoginPage from './routes/Login';
 import { fetchFontBytes } from './lib/pdfGenerator';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { ConfigProvider } from './contexts/ConfigContext';
 import './index.css';
 
-function App() {
+function AppShell() {
   const [fontLoaded, setFontLoaded] = useState(false);
+  const auth = useAuth();
 
   useEffect(() => {
     fetchFontBytes()
@@ -19,11 +24,28 @@ function App() {
     () => [
       {
         path: '/',
-        component: <BuilderPage fontLoaded={fontLoaded} />,
+        component: (
+          <ProtectedRoute>
+            <ConfigProvider>
+              <BuilderPage fontLoaded={fontLoaded} />
+            </ConfigProvider>
+          </ProtectedRoute>
+        ),
         aliases: ['/builder', '/home'],
       },
-      { path: '/config', component: <ConfigPage />, aliases: ['/configuration'] },
+      {
+        path: '/config',
+        component: (
+          <ProtectedRoute>
+            <ConfigProvider>
+              <ConfigPage />
+            </ConfigProvider>
+          </ProtectedRoute>
+        ),
+        aliases: ['/configuration'],
+      },
       { path: '/about', component: <AboutPage />, aliases: ['/info'] },
+      { path: '/login', component: <LoginPage />, aliases: [] },
     ],
     [fontLoaded],
   );
@@ -61,6 +83,15 @@ function App() {
               {item.label}
             </Link>
           ))}
+          {auth.status === 'allowed' ? (
+            <button
+              type="button"
+              onClick={() => void auth.signOut()}
+              className="text-slate-300 hover:text-white transition-colors text-xs sm:text-sm md:text-base px-2 py-1 rounded hover:bg-slate-700/20"
+            >
+              Sign out
+            </button>
+          ) : null}
         </nav>
       </header>
       <main className="flex-1">
@@ -75,6 +106,14 @@ function App() {
         <p>Made for jewel998 / sku • install as PWA for mobile use</p>
       </footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppShell />
+    </AuthProvider>
   );
 }
 

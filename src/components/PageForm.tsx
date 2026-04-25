@@ -8,13 +8,14 @@ import {
   getFilteredCategories,
 } from '../lib/brandUtils';
 import { extractBrandAndCategory, normalizeBrandInProductName } from '../lib/productNameUtils';
-import config from '../data/config';
+import type { AppConfig } from '../types/config';
 
 interface PageFormProps {
   index: number;
   page: LabelData;
   brands: string[];
   categories: Record<string, string>;
+  mapping: AppConfig['mapping'];
   onChange: (index: number, next: LabelData) => void;
   onRemove: (index: number) => void;
 }
@@ -24,6 +25,7 @@ export default function PageForm({
   page,
   brands,
   categories,
+  mapping,
   onChange,
   onRemove,
 }: PageFormProps) {
@@ -50,12 +52,9 @@ export default function PageForm({
     const updated = { ...page, brand: matchedBrand };
 
     // If category already exists and both match config, set locationId
-    const matchedCategory = findMatchingCategory(
-      updated.category || '',
-      Object.keys(config.categories),
-    );
-    if (matchedCategory && updated.brand && config.mapping[matchedBrand]?.[matchedCategory]) {
-      updated.locationId = config.mapping[matchedBrand][matchedCategory][0] ?? '';
+    const matchedCategory = findMatchingCategory(updated.category || '', Object.keys(categories));
+    if (matchedCategory && updated.brand && mapping[matchedBrand]?.[matchedCategory]) {
+      updated.locationId = mapping[matchedBrand][matchedCategory][0] ?? '';
       updated.category = matchedCategory;
     }
 
@@ -70,15 +69,12 @@ export default function PageForm({
 
   // Handle category blur to auto-select matching category and attempt to update location
   const handleCategoryBlur = () => {
-    const matchedCategory = findMatchingCategory(
-      page.category || '',
-      Object.keys(config.categories),
-    );
+    const matchedCategory = findMatchingCategory(page.category || '', Object.keys(categories));
     const updated = { ...page, category: matchedCategory };
 
     const matchedBrand = findMatchingBrand(updated.brand || '', brands);
-    if (matchedBrand && matchedCategory && config.mapping[matchedBrand]?.[matchedCategory]) {
-      updated.locationId = config.mapping[matchedBrand][matchedCategory][0] ?? '';
+    if (matchedBrand && matchedCategory && mapping[matchedBrand]?.[matchedCategory]) {
+      updated.locationId = mapping[matchedBrand][matchedCategory][0] ?? '';
       updated.brand = matchedBrand;
     }
 
@@ -122,9 +118,9 @@ export default function PageForm({
     if (
       updatedPage.brand &&
       updatedPage.category &&
-      config.mapping[updatedPage.brand]?.[updatedPage.category]
+      mapping[updatedPage.brand]?.[updatedPage.category]
     ) {
-      updatedPage.locationId = config.mapping[updatedPage.brand][updatedPage.category][0] ?? '';
+      updatedPage.locationId = mapping[updatedPage.brand][updatedPage.category][0] ?? '';
     }
 
     // Only update if something changed

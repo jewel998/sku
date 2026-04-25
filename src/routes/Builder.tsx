@@ -3,13 +3,10 @@ import { createLabelPdf, fetchFontBytes, LabelData } from '../lib/pdfGenerator';
 import { useDebounce } from '../hooks/useDebounce';
 import PageForm from '../components/PageForm';
 import PDFViewer from '../components/PDFViewer';
-import config from '../data/config';
-import type { AppConfig } from '../types/config';
 import { uniq } from 'lodash-es';
 import { Search, Plus, FileText, Trash2 } from 'lucide-react';
 import { useLabelStore } from '../stores/labelStore';
-
-type ConfigMapping = AppConfig['mapping'];
+import { useConfig } from '../contexts/ConfigContext';
 
 export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
@@ -18,8 +15,9 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
 
   const { pages, searchQuery, addPage, removePage, updatePage, setSearchQuery, clearAll } =
     useLabelStore();
+  const { config, source, isStale, error: configError } = useConfig();
 
-  const brands = useMemo(() => uniq(config.brands), []);
+  const brands = useMemo(() => uniq(config.brands), [config.brands]);
   const categories = config.categories;
   const pageCount = pages.length;
 
@@ -72,8 +70,7 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
 
   const handleUpdatePage = (index: number, nextPage: LabelData) => {
     if (nextPage.brand && nextPage.category && !nextPage.locationId) {
-      const mapped =
-        (config.mapping as ConfigMapping)[nextPage.brand]?.[nextPage.category]?.[0] ?? '';
+      const mapped = config.mapping[nextPage.brand]?.[nextPage.category]?.[0] ?? '';
       nextPage = { ...nextPage, locationId: mapped };
     }
     updatePage(index, nextPage);
@@ -116,6 +113,7 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
               page={page}
               brands={brands}
               categories={categories}
+              mapping={config.mapping}
               onChange={handleUpdatePage}
               onRemove={handleRemovePage}
             />
@@ -146,9 +144,19 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
           </div>
         </div>
 
+        <div className="mt-4 text-xs text-slate-400">
+          Config source: {source}
+          {isStale ? ' (sync pending)' : ''}
+        </div>
+
         {error ? (
           <div className="mt-6 p-4 bg-red-900/20 border border-red-700/30 rounded-lg text-red-300 text-sm">
             {error}
+          </div>
+        ) : null}
+        {configError ? (
+          <div className="mt-3 p-3 bg-amber-900/20 border border-amber-700/30 rounded-lg text-amber-200 text-sm">
+            Firebase config is unavailable, using the latest local backup.
           </div>
         ) : null}
       </section>

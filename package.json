@@ -50,6 +50,7 @@
     "prepack": "pnpm run ci"
   },
   "dependencies": {
+    "firebase": "^12.12.1",
     "fontkit": "^2.0.4",
     "lodash-es": "^4.17.21",
     "lucide-react": "^1.8.0",
