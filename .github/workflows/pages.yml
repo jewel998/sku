@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
+      name: Build
       url: https://jewel998.github.io/sku/
     permissions:
       contents: write
@@ -40,12 +40,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Verify Firebase build env
+      - name: Check Firebase build env
         run: |
-          test -n "$VITE_FIREBASE_API_KEY"
-          test -n "$VITE_FIREBASE_AUTH_DOMAIN"
-          test -n "$VITE_FIREBASE_PROJECT_ID"
-          test -n "$VITE_FIREBASE_APP_ID"
+          missing=0
+          for name in VITE_FIREBASE_API_KEY VITE_FIREBASE_AUTH_DOMAIN VITE_FIREBASE_PROJECT_ID VITE_FIREBASE_APP_ID; do
+            if [ -z "${!name}" ]; then
+              echo "::warning title=Missing Firebase env::$name is empty. Add FIREBASE_* secrets to the Build environment."
+              missing=1
+            fi
+          done
+          if [ "$missing" -eq 0 ]; then
+            echo "Firebase build env is configured."
+          fi
 
       - name: Build site
         run: pnpm run build
