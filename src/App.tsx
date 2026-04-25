@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import BuilderPage from './routes/Builder';
 import AboutPage from './routes/About';
+import ConfigPage from './routes/Config';
 import { fetchFontBytes } from './lib/pdfGenerator';
 import './index.css';
 
@@ -21,6 +22,7 @@ function App() {
         component: <BuilderPage fontLoaded={fontLoaded} />,
         aliases: ['/builder', '/home'],
       },
+      { path: '/config', component: <ConfigPage />, aliases: ['/configuration'] },
       { path: '/about', component: <AboutPage />, aliases: ['/info'] },
     ],
     [fontLoaded],
@@ -29,6 +31,7 @@ function App() {
   const navLinks = useMemo(
     () => [
       { label: 'Builder', path: '/' },
+      { label: 'Config', path: '/config' },
       { label: 'About', path: '/about' },
     ],
     [],
@@ -36,21 +39,24 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-900 text-slate-200 font-sans">
-      <header className="flex items-center justify-between gap-4 p-5 bg-slate-900/95 sticky top-0 z-10 border-b border-slate-700/20">
-        <Link to="/" className="flex items-center gap-3 text-xl font-bold text-slate-100">
+      <header className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 sm:p-4 md:p-5 bg-slate-900/95 sticky top-0 z-10 border-b border-slate-700/20">
+        <Link
+          to="/"
+          className="flex items-center gap-2 sm:gap-3 text-lg sm:text-xl font-bold text-slate-100"
+        >
           <img
             src="/sku/logo.svg"
             alt="SKU Label Maker"
-            className="w-9 h-9 rounded-2xl border border-slate-700 bg-slate-950"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl border border-slate-700 bg-slate-950"
           />
-          <span>SKU Label Maker</span>
+          <span className="text-sm sm:text-base">SKU Label Maker</span>
         </Link>
-        <nav className="flex gap-4">
+        <nav className="flex gap-2 sm:gap-4 flex-wrap justify-center sm:justify-end">
           {navLinks.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className="text-slate-300 hover:text-white transition-colors"
+              className="text-slate-300 hover:text-white transition-colors text-xs sm:text-sm md:text-base px-2 py-1 rounded hover:bg-slate-700/20"
             >
               {item.label}
             </Link>
@@ -65,7 +71,7 @@ function App() {
           ])}
         </Routes>
       </main>
-      <footer className="p-4 bg-slate-800 text-center text-slate-400 text-sm">
+      <footer className="p-3 md:p-4 bg-slate-800 text-center text-slate-400 text-xs sm:text-sm">
         <p>Made for jewel998 / sku • install as PWA for mobile use</p>
       </footer>
     </div>

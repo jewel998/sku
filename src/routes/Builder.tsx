@@ -88,9 +88,9 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
   };
 
   return (
-    <div className="flex flex-col xl:flex-row gap-6 items-start p-4">
-      <section className="bg-slate-900/96 border border-white/10 rounded-xl p-5 shadow-lg flex-1">
-        <div className="text-lg font-bold mb-5 flex items-center gap-2">
+    <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 items-start p-4 md:p-6 pb-8">
+      <section className="bg-slate-900/96 border border-white/10 rounded-xl p-4 md:p-5 shadow-lg w-full lg:flex-1">
+        <div className="text-lg md:text-xl font-bold mb-5 flex items-center gap-2">
           <FileText className="w-5 h-5" />
           Label Builder
         </div>
@@ -103,12 +103,12 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
               placeholder="Search labels..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-4 py-2 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 mb-4">
+        <div className="grid grid-cols-1 gap-4 md:gap-5 mb-4">
           {filteredPages.map((page, index) => (
             <PageForm
               key={index}
@@ -122,11 +122,11 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
           ))}
         </div>
 
-        <div className="flex justify-between items-center flex-wrap gap-3 mt-3">
-          <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mt-3">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               type="button"
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 hover:-translate-y-px shadow-md hover:shadow-lg"
+              className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 hover:-translate-y-px shadow-md hover:shadow-lg flex-1 sm:flex-none text-sm md:text-base"
               onClick={handleAddPage}
             >
               <Plus className="w-4 h-4" />
@@ -134,26 +134,26 @@ export default function BuilderPage({ fontLoaded }: { fontLoaded: boolean }) {
             </button>
             <button
               type="button"
-              className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-200 hover:-translate-y-px shadow-md hover:shadow-lg"
+              className="flex items-center justify-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-200 hover:-translate-y-px shadow-md hover:shadow-lg flex-1 sm:flex-none text-sm md:text-base"
               onClick={clearAll}
             >
               <Trash2 className="w-4 h-4" />
               Clear All
             </button>
           </div>
-          <div className="px-3 py-1 bg-green-900/20 text-green-300 rounded-full text-sm">
+          <div className="px-3 py-1 bg-green-900/20 text-green-300 rounded-full text-xs md:text-sm">
             {pageCount} labels
           </div>
         </div>
 
         {error ? (
-          <div className="mt-6 p-4 bg-red-900/20 border border-red-700/30 rounded-lg text-red-300">
+          <div className="mt-6 p-4 bg-red-900/20 border border-red-700/30 rounded-lg text-red-300 text-sm">
             {error}
           </div>
         ) : null}
       </section>
 
-      <div className="flex-[1.2] sticky top-24">
+      <div className="w-full lg:flex-[1.2] lg:sticky lg:top-24">
         <PDFViewer pdfUrl={pdfUrl} />
       </div>
     </div>
