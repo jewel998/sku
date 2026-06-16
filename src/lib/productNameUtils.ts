@@ -6,6 +6,94 @@
  * @param categories - Record of available categories
  * @returns Object with extracted brand and category, or null if no match
  */
+const CATEGORY_SYNONYMS: Record<string, string[]> = {
+  Top: [
+    'blouse',
+    'shirt',
+    'tee',
+    't-shirt',
+    'tank',
+    'bodysuit',
+    'crop top',
+    'cropped top',
+    'vest',
+    'sweater',
+    'jumper',
+  ],
+  Bottom: ['pant', 'pants', 'trouser', 'jean', 'jeans', 'skirt', 'short', 'shorts'],
+  Dress: ['dress', 'gown', 'maxi', 'midi', 'mini', 'romper', 'jumpsuit', 'kaftan', 'shift'],
+  'Co-ords Set': ['set', 'co-ord', 'coord', 'two-piece', 'two piece', 'matching set'],
+  Outerwear: [
+    'jacket',
+    'coat',
+    'blazer',
+    'parka',
+    'duster',
+    'anorak',
+    'hoodie',
+    'sweatshirt',
+    'cardigan',
+  ],
+  Accessory: [
+    'bag',
+    'belt',
+    'scarf',
+    'hat',
+    'cap',
+    'glove',
+    'gloves',
+    'sunglass',
+    'sunglasses',
+    'jewelry',
+    'jewellery',
+    'necklace',
+    'earring',
+    'bracelet',
+    'watch',
+  ],
+  Camisole: ['cami', 'camisole', 'sling', 'tank top'],
+  Lingerie: [
+    'lingerie',
+    'bra',
+    'brief',
+    'briefs',
+    'panty',
+    'panties',
+    'thong',
+    'underwear',
+    'bralette',
+  ],
+};
+
+const escapeRegExp = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const findCategoryByKeyword = (
+  normalizedName: string,
+  categories: Record<string, string>,
+): string | null => {
+  const categoryKeys = Object.keys(categories).sort((a, b) => b.length - a.length);
+
+  for (const categoryKey of categoryKeys) {
+    const keyPattern = new RegExp(`\\b${escapeRegExp(categoryKey.toLowerCase())}\\b`);
+    if (keyPattern.test(normalizedName)) {
+      return categoryKey;
+    }
+  }
+
+  for (const [category, synonyms] of Object.entries(CATEGORY_SYNONYMS)) {
+    if (!categories[category]) continue;
+
+    for (const synonym of synonyms) {
+      const pattern = new RegExp(`\\b${escapeRegExp(synonym.toLowerCase())}\\b`);
+      if (pattern.test(normalizedName)) {
+        return category;
+      }
+    }
+  }
+
+  return null;
+};
+
 export const extractBrandAndCategory = (
   productName: string,
   brands: string[],
@@ -25,14 +113,8 @@ export const extractBrandAndCategory = (
     }
   }
 
-  // Try to find category in product name
-  const categoryKeys = Object.keys(categories).sort((a, b) => b.length - a.length);
-  for (const categoryKey of categoryKeys) {
-    if (normalizedName.includes(categoryKey.toLowerCase())) {
-      foundCategory = categoryKey;
-      break;
-    }
-  }
+  // Try to find category in product name using exact category labels or synonyms
+  foundCategory = findCategoryByKeyword(normalizedName, categories);
 
   return { brand: foundBrand, category: foundCategory };
 };

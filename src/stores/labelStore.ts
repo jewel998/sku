@@ -39,6 +39,7 @@ export const useLabelStore = create<LabelState>()(
           newPages[index] = page;
           return { pages: newPages };
         }),
+      setPages: (pages: LabelData[]) => set({ pages }),
       setSearchQuery: (query: string) => set({ searchQuery: query }),
       clearAll: () => set({ pages: [{ ...DEFAULT_PAGE }], searchQuery: '' }),
     }),
