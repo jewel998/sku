@@ -8,6 +8,7 @@ interface LabelState {
   addPage: () => void;
   removePage: (index: number) => void;
   updatePage: (index: number, page: LabelData) => void;
+  setPages: (pages: LabelData[]) => void;
   setSearchQuery: (query: string) => void;
   clearAll: () => void;
 }
